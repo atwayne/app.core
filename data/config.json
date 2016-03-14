@@ -1,0 +1,27 @@
+{
+  "local": {
+    "Service": {
+      "WebAPI": "http://localhost:8632/"
+    }
+  },
+  "dev": {
+    "Service": {
+      "WebAPI": "http://dev:8632/"
+    }
+  },
+  "prod": {
+    "Service": {
+      "WebAPI": "http://prod:8632/"
+    }
+  },
+  "uat": {
+    "Service": {
+      "WebAPI": "http://uat:8632/"
+    }
+  },
+  "qa": {
+    "Service": {
+      "WebAPI": "http://qa:8632/"
+    }
+  }
+}
