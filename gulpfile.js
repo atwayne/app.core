@@ -31,20 +31,15 @@ gulp.task('clean', function() {
 });
 
 // 3. build
-gulp.task('copy', function() {
-  return gulp.src('./src/*.js')
-    .pipe(gulp.dest('./dist'));
-});
-
-// 4. concat
-gulp.task('concat', ['config', 'copy'], function() {
-  return gulp.src(['./dist/*.js'])
+gulp.task('combine', ['config'], function() {
+  // modules should be ordered in the first place
+  return gulp.src(['./src/modules/*.js', './src/**/*.js', './dist/ngConstant.js'])
     .pipe(concat('app.core.js'))
     .pipe(gulp.dest('./dist'));
 });
 
 // 5. minify
-gulp.task('minify', ['concat'], function() {
+gulp.task('minify', ['combine'], function() {
   gulp.src('./dist/app.core.js')
     .pipe(uglify())
     .pipe(rename('app.core.min.js'))
@@ -63,4 +58,4 @@ gulp.task('house-clean', ['minify'], function() {
 });
 
 // 7. all
-gulp.task('build', ['clean', 'copy', 'config', 'concat', 'minify', 'house-clean']);
+gulp.task('build', ['clean', 'combine', 'config', 'minify', 'house-clean']);
