@@ -1,1 +1,4 @@
-# app.core
+build
+---
+    npm install
+    npm build
